@@ -1,4 +1,4 @@
-<h1 align="center">The Agentic Engineering Toolkit</h1>
+<h1 align="center">The Agentic Engineering</h1>
 
 <p align="center">
   A comprehensive collection of agents, commands, and skills that extend <a href="https://opencode.ai">OpenCode</a> into a full software engineering team.
@@ -251,28 +251,6 @@ Skills are reusable knowledge modules, not agents. Multiple agents can reference
 ### Markdown-Native
 
 Everything is defined in markdown with YAML frontmatter. No compilation, no build step, no runtime dependencies. Human-readable, version-controllable, and portable across any LLM provider that OpenCode supports.
-
-## Extending the Toolkit
-
-### Adding a New Agent
-
-1. Check for duplicates against existing agents
-2. Create `agent/<team>/<activity-name>.md` with YAML frontmatter
-3. Follow the PICS layout structure
-4. Assign a single activity focus
-5. Reference relevant skills in frontmatter
-
-### Adding a New Skill
-
-1. Create `skill/<skill-name>/SKILL.md` with frontmatter (`name`, `description`, `license`, `compatibility: opencode`)
-2. Add `reference/` for domain knowledge, `templates/` for reusable templates, `examples/` for samples
-3. Reference from agents that need the knowledge
-
-### Adding a New Command
-
-1. Create `command/<command-name>.md` with `description`, `argument-hint`, and `allowed-tools` in frontmatter
-2. Define the orchestration workflow
-3. Delegate actual work to agents — commands should orchestrate, not implement
 
 ## Compatibility
 
