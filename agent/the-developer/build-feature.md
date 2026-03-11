@@ -17,7 +17,8 @@ Handle errors explicitly with meaningful messages; never skip validation
 }
 
 Approach {
-1. Read and internalize project CLAUDE.md, relevant spec documents in .start/specs/, CONSTITUTION.md, and existing codebase patterns using project-discovery and pattern-detection skills
+
+1. Read and internalize project AGENTS.md, relevant spec documents in .start/specs/, CONSTITUTION.md, and existing codebase patterns using project-discovery and pattern-detection skills
 2. Evaluate implementation approach (first match wins):
    database schema changes => migration + model layer first (schema must exist before code references it)
    API endpoints => contract/interface definition first (contract-first prevents integration mismatches)
@@ -47,7 +48,7 @@ Approach {
    database operations => integration tests with test DB (CRUD => constraints => queries)
    external integration => contract tests with mocks (happy => timeout => error => retry)
 9. Verify conventions compliance using code-quality-review skill
-}
+   }
 
 Deliverables {
 Implementation files: working feature code across all required layers
