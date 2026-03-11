@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-The Agentic Startup - Spec Generation Script
+The Agentic Engineer - Spec Generation Script
 Creates numbered spec directories with auto-incrementing IDs
 
 Location: plugins/start/skills/specify-meta/spec.py
@@ -222,7 +222,7 @@ def create_spec(feature_name: str, template: Optional[str] = None) -> None:
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(
-        description="The Agentic Startup - Spec Generation Script"
+        description="The Agentic Engineer - Spec Generation Script"
     )
     parser.add_argument(
         "feature_name",
