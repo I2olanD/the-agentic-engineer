@@ -4,6 +4,10 @@
   A comprehensive collection of agents, commands, and skills that extend <a href="https://opencode.ai">OpenCode</a> into a full software engineering team.
 </p>
 
+<p align="center">
+  <em>Ported from <a href="https://github.com/rsmdt/the-startup">the-startup</a></em>
+</p>
+
 ---
 
 ## What Is This?
@@ -17,15 +21,11 @@ Drop this into your OpenCode configuration and gain access to structured workflo
 ### Install
 
 ```bash
-# Clone into your OpenCode config directory
-git clone <repo-url> ~/.config/opencode/agentic-engineering
+git clone <repo-url> && cd the-agentic-engineer
+./install.sh
 ```
 
-Or add it to your project directly:
-
-```bash
-git clone <repo-url> .opencode/agentic-engineering
-```
+The interactive installer copies agents, commands, skills, and configuration to `~/.config/opencode/`. It supports `--dry-run` for preview, `--uninstall` for removal, and `--path <dir>` for custom targets. Run `./install.sh --help` for details.
 
 ### Configure
 
