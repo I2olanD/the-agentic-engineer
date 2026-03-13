@@ -1,4 +1,4 @@
-<h1 align="center">The Agentic Engineering</h1>
+<h1 align="center">The Agentic Engineer</h1>
 
 <p align="center">
   A comprehensive collection of agents, commands, and skills that extend <a href="https://opencode.ai">OpenCode</a> into a full software engineering team.
@@ -50,21 +50,21 @@ opencode.json   OpenCode configuration (MCP servers, plugins)
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `/specify` | Create a full specification (PRD → SDD → Plan) from a brief description |
-| `/implement` | Execute a spec plan phase-by-phase via specialist agents. Supports `autonomous` mode |
-| `/review` | Multi-perspective code review (security, performance, dead code, simplification, tests) |
-| `/brainstorm` | Explore intent, requirements, and design before implementation |
-| `/sweep` | Dead code analysis with proof-before-removal verification |
-| `/audit` | Parallel multi-agent codebase health check (type safety, dead code, coverage, security, performance) |
-| `/test` | Run and verify the test suite, enforce strict code ownership |
-| `/debug` | Diagnose and resolve bugs through root cause analysis |
-| `/refactor` | Simplify and clean up code without changing business logic |
-| `/analyze` | Discover business rules, technical patterns, and system interfaces |
-| `/document` | Generate and maintain documentation for code, APIs, and components |
-| `/validate` | Validate specifications, implementations, and constitution compliance |
-| `/constitution` | Create or update project governance rules |
+| Command         | Description                                                                                          |
+| --------------- | ---------------------------------------------------------------------------------------------------- |
+| `/specify`      | Create a full specification (PRD → SDD → Plan) from a brief description                              |
+| `/implement`    | Execute a spec plan phase-by-phase via specialist agents. Supports `autonomous` mode                 |
+| `/review`       | Multi-perspective code review (security, performance, dead code, simplification, tests)              |
+| `/brainstorm`   | Explore intent, requirements, and design before implementation                                       |
+| `/sweep`        | Dead code analysis with proof-before-removal verification                                            |
+| `/audit`        | Parallel multi-agent codebase health check (type safety, dead code, coverage, security, performance) |
+| `/test`         | Run and verify the test suite, enforce strict code ownership                                         |
+| `/debug`        | Diagnose and resolve bugs through root cause analysis                                                |
+| `/refactor`     | Simplify and clean up code without changing business logic                                           |
+| `/analyze`      | Discover business rules, technical patterns, and system interfaces                                   |
+| `/document`     | Generate and maintain documentation for code, APIs, and components                                   |
+| `/validate`     | Validate specifications, implementations, and constitution compliance                                |
+| `/constitution` | Create or update project governance rules                                                            |
 
 The core specification pipeline: `/specify` produces `requirements.md` → `solution.md` → `plan/` phases, stored in `.start/specs/[NNN]-[name]/`. `/implement` executes phases sequentially with `/validate` at each boundary.
 
@@ -72,21 +72,21 @@ The core specification pipeline: `/specify` produces `requirements.md` → `solu
 
 Each agent handles exactly one activity. Organized by team:
 
-| Team | Agent | Focus |
-|------|-------|-------|
-| Developer | `build-feature` | Build features with autonomous TDD loop, validation, and error handling |
-| Developer | `optimize-performance` | Profile and optimize across frontend, backend, and database layers |
-| Architect | `review-robustness` | Complexity and concurrency safety review |
-| Architect | `review-security` | Vulnerabilities, supply chain risks, and compliance |
-| Architect | `review-compatibility` | Breaking changes and migration paths |
-| Architect | `design-system` | Service boundaries, scalability, and deployment architecture |
-| Designer | `design-visual` | Visual foundations, tokens, and WCAG accessibility |
-| Designer | `design-interaction` | Information architecture, navigation, and user flows |
-| Designer | `research-user` | Behavioral interviews, personas, and pattern synthesis |
-| Analyst | `research-product` | Market evidence and requirement clarification |
-| Tester | `test-strategy` | Functional quality and performance resilience testing |
-| DevOps | `build-platform` | Containers, IaC, and CI/CD automation |
-| DevOps | `monitor-production` | Metrics, alerting, SLIs, SLOs, and observability |
+| Team      | Agent                  | Focus                                                                   |
+| --------- | ---------------------- | ----------------------------------------------------------------------- |
+| Developer | `build-feature`        | Build features with autonomous TDD loop, validation, and error handling |
+| Developer | `optimize-performance` | Profile and optimize across frontend, backend, and database layers      |
+| Architect | `review-robustness`    | Complexity and concurrency safety review                                |
+| Architect | `review-security`      | Vulnerabilities, supply chain risks, and compliance                     |
+| Architect | `review-compatibility` | Breaking changes and migration paths                                    |
+| Architect | `design-system`        | Service boundaries, scalability, and deployment architecture            |
+| Designer  | `design-visual`        | Visual foundations, tokens, and WCAG accessibility                      |
+| Designer  | `design-interaction`   | Information architecture, navigation, and user flows                    |
+| Designer  | `research-user`        | Behavioral interviews, personas, and pattern synthesis                  |
+| Analyst   | `research-product`     | Market evidence and requirement clarification                           |
+| Tester    | `test-strategy`        | Functional quality and performance resilience testing                   |
+| DevOps    | `build-platform`       | Containers, IaC, and CI/CD automation                                   |
+| DevOps    | `monitor-production`   | Metrics, alerting, SLIs, SLOs, and observability                        |
 
 ## Skills
 
