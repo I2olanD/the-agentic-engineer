@@ -23,7 +23,6 @@ Never proceed to next cycle without user confirmation.
 Never write documentation without asking user first.
 }
 
-Perspectives {
 | Perspective | Intent | What to Discover | Output Location |
 |-------------|--------|-----------------|-----------------|
 | Business | Understand domain logic | Business rules, validation logic, workflows, state machines, domain entities | .start/domain/ |
@@ -32,7 +31,6 @@ Perspectives {
 | Performance | Find optimization opportunities | Bottlenecks, caching patterns, query patterns, resource usage | .start/research/ |
 | Integration | Map external boundaries | External APIs, webhooks, data flows, third-party services | .start/interfaces/ |
 | Data | Map persistence layer | Data models, schemas, relationships, migrations, storage patterns, indexing strategies | .start/patterns/ |
-}
 
 FocusAreaMapping {
 "business" | "domain" => Business perspective
