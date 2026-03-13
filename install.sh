@@ -451,7 +451,7 @@ show_success() {
     printf '%s\n' "  Installed to: $TARGET_DIR"
     printf '%s\n' ""
     printf '%s\n' "  ${BOLD}Next steps:${RESET}"
-    printf '%s\n' "  - Open Claude Code or OpenCode to use the toolkit"
+    printf '%s\n' "  - Open OpenCode to use the toolkit"
     printf '%s\n' "  - Try: /specify, /review, /implement"
     printf '%s\n' ""
 }
