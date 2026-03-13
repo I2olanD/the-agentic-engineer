@@ -32,10 +32,11 @@ Team-organized autonomous specialists launched via the Agent tool. Each agent ha
 User-invocable slash commands that orchestrate multi-phase workflows:
 
 - **/specify** — PRD → SDD → PLAN specification pipeline (delegates to `/specify-requirements`, `/specify-solution`, `/specify-plan`)
-- **/implement** — Executes specification plans phase-by-phase, delegating to specialist agents
+- **/implement** — Executes specification plans phase-by-phase, delegating to specialist agents (supports `autonomous` mode for zero-interrupt execution)
 - **/review** — Multi-perspective code review (security, performance, simplification, quality, testing)
 - **/brainstorm** — Design exploration before implementation (probe → approaches → design)
 - **/sweep** — Dead code analysis with proof-before-removal verification (unused exports, dead dependencies, orphaned files)
+- **/audit** — Parallel multi-agent codebase health check (type safety, dead code, test coverage, security, performance)
 - **/test**, **/debug**, **/refactor**, **/analyze**, **/document**, **/validate**, **/constitution**
 
 ### Skills (`skill/`)
