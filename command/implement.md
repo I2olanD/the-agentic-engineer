@@ -59,6 +59,17 @@ Implement {
         Phase1_Initialize {
             Invoke /specify-meta to read the spec.
 
+            SpecCompletenessGate {
+                Read the spec directory and verify pipeline completion:
+                match (spec completeness) {
+                    requirements.md missing => BLOCK: "PRD not found. Run /specify first to complete the spec pipeline (PRD → SDD → PLAN)."
+                    solution.md missing     => WARN: "SDD not found. Recommend running /specify to complete the design phase before implementation."
+                    plan/ directory missing => BLOCK: "Implementation plan not found. Run /specify to complete the full pipeline."
+                    all present             => proceed
+                }
+                Never start implementation without at least requirements.md and plan/ directory.
+            }
+
             match (spec) {
                 plan/ directory exists => {
                     Read plan/README.md (the manifest).
@@ -150,6 +161,7 @@ Implement {
 ## Important Notes
 
 - You are an orchestrator ONLY — never implement code directly, always delegate to subagents
+- Verify spec pipeline completeness (PRD + PLAN minimum) before starting — block if missing
 - Load one phase file at a time for context efficiency; skip already-completed phases on resume
 - Run /validate drift check and constitution check at every phase boundary
 - Update both phase-N.md frontmatter AND plan/README.md checkbox when completing each phase

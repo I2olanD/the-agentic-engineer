@@ -35,13 +35,14 @@ User-invocable slash commands that orchestrate multi-phase workflows:
 - **/implement** — Executes specification plans phase-by-phase, delegating to specialist agents
 - **/review** — Multi-perspective code review (security, performance, simplification, quality, testing)
 - **/brainstorm** — Design exploration before implementation (probe → approaches → design)
+- **/sweep** — Dead code analysis with proof-before-removal verification (unused exports, dead dependencies, orphaned files)
 - **/test**, **/debug**, **/refactor**, **/analyze**, **/document**, **/validate**, **/constitution**
 
 ### Skills (`skill/`)
 
 Knowledge modules that agents and commands reference for domain expertise. Each skill has a `SKILL.md` plus `reference/`, `templates/`, and `examples/` subdirectories.
 
-Key skills: `project-discovery`, `pattern-detection`, `agentic-patterns`, `writing-skills`, `specify-meta`, `specify-requirements`, `specify-solution`, `specify-plan`, `domain-modeling`, `api-contract-design`, `architecture-selection`, `testing`, `code-quality-review`, `security-assessment`, `performance-analysis`, `platform-operations`, `frontend-patterns`, `technical-writing`, `user-research`, `requirements-elicitation`, `feature-prioritization`
+Key skills: `project-discovery`, `pattern-detection`, `agentic-patterns`, `writing-skills`, `specify-meta`, `specify-requirements`, `specify-solution`, `specify-plan`, `domain-modeling`, `api-contract-design`, `architecture-selection`, `testing`, `code-quality-review` (includes `safe-removal` reference), `security-assessment`, `performance-analysis`, `platform-operations`, `frontend-patterns`, `technical-writing`, `user-research`, `requirements-elicitation`, `feature-prioritization`
 
 ## Key Architectural Patterns
 

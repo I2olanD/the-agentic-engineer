@@ -68,7 +68,7 @@ Refactor {
             Feature Envy                => Move Method, Move Field
             Data Clumps                 => Extract Class, Introduce Parameter Object
             Speculative Generality      => Collapse Hierarchy, Inline Class, Remove Parameter
-            Dead Code                   => Remove Dead Code
+            Dead Code                   => Remove Dead Code (apply safe-removal protocol from code-quality-review skill — verify zero usage before removing)
         }
 
         ClassLevel {
