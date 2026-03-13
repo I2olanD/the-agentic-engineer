@@ -79,7 +79,8 @@ Debug {
             Propose minimal fix targeting root cause.
             Ask user: Apply fix | Modify approach | Skip
 
-            Apply change, run tests, report actual results honestly.
+            Apply change, run build + tests, report actual results honestly.
+            If build or tests fail after fix: iterate autonomously (max 3 attempts) before escalating.
 
             Ask user: Add test case for this bug | Check for pattern elsewhere | Done
         }

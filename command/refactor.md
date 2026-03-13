@@ -68,7 +68,7 @@ Refactor {
             Feature Envy                => Move Method, Move Field
             Data Clumps                 => Extract Class, Introduce Parameter Object
             Speculative Generality      => Collapse Hierarchy, Inline Class, Remove Parameter
-            Dead Code                   => Remove Dead Code
+            Dead Code                   => Remove Dead Code (apply safe-removal protocol from code-quality-review skill — verify zero usage before removing)
         }
 
         ClassLevel {
@@ -157,8 +157,10 @@ Refactor {
         }
 
         Phase4_FinalValidation {
+            Run build command to verify compilation.
             Run complete test suite. Compare behavior with baseline.
-            Present completion summary: changes applied, tests status, skipped items.
+            If build or tests fail: self-correct (max 3 attempts) before escalating to user.
+            Present completion summary: changes applied, build status, tests status, skipped items.
             Ask user: Commit changes | Run full test suite | Address skipped items | Done
         }
     }

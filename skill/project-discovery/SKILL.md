@@ -28,6 +28,14 @@ ProjectDiscovery {
     }
   }
 
+  IdentifyProject {
+    Skip if project identity is already established from prior context or spec references.
+    Determine project identity: name, platform, purpose, and target audience.
+    Read package.json/go.mod/Cargo.toml name field, README first paragraph, and CLAUDE.md.
+    Verify: what product is this? What platform is it for? Who uses it?
+    This prevents misidentifying the project (e.g., confusing the target platform or product name).
+  }
+
   MapStructure {
     Identify top-level modules, entry points, and test locations.
     Identify config/manifests for language/tooling.
@@ -46,6 +54,7 @@ ProjectDiscovery {
   }
 
   BuildDiscoveryReport {
+    Lead with project identity: name, platform, purpose.
     Summarize architecture, stack, conventions, and verified/mismatched doc claims.
     Highlight unknowns and next best inspection steps.
   }

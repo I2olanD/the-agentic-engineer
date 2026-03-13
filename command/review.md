@@ -39,6 +39,7 @@ Review {
         | Dependencies | Assess supply chain security | Changes to package.json, requirements.txt, go.mod, Cargo.toml, etc. |
         | Compatibility | Detect breaking changes | Modifications to public APIs, database schemas, config formats, migration files |
         | Accessibility | Ensure inclusive design | Frontend/UI component changes |
+        | Dead Code | Find orphaned code left behind by changes | Any code deletion, refactoring, or feature removal |
         | Constitution | Check project rules compliance | Project has CONSTITUTION.md |
     }
 
@@ -74,6 +75,14 @@ Review {
             Injection: SQL uses parameterized statements, XSS prevention (output encoding), command injection prevention
             Data Protection: no hardcoded secrets, sensitive data encrypted, PII handled per policy
             Input Validation: all user inputs validated, proper sanitization, safe deserialization
+        }
+
+        DeadCode {
+            Orphaned Exports: functions/types exported but no longer imported after the change
+            Orphaned Imports: imports that reference removed or renamed symbols
+            Unreachable Code: code after early returns, disabled branches, impossible conditions
+            Orphaned Dependencies: packages no longer imported after the change (apply safe-removal protocol from code-quality-review skill)
+            Orphaned Files: files no longer imported from any other file after the change
         }
 
         Performance {
