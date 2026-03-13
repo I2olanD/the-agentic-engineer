@@ -34,24 +34,24 @@ Debug {
     | State | Inspect runtime values | Variable values, object states, race conditions, timing issues |
     | Environment | Compare contexts | Configuration, versions, deployment differences, env variables |
     | Recent Changes | Identify regression source | Recent commits, git blame at failure site, dependency updates, recently modified config |
+  }
 
-    BugTypePatterns {
-      | Bug Type | What to Check | How to Report |
-      |----------|---------------|---------------|
-      | Logic errors | Data flow, boundary conditions | "The condition on line X doesn't handle case Y" |
-      | Integration | API contracts, versions | "The API expects X but we're sending Y" |
-      | Timing/async | Race conditions, await handling | "There's a race between A and B" |
-      | Intermittent | Variable conditions, state | "This fails when [condition] because [reason]" |
-    }
+  BugTypePatterns {
+    | Bug Type | What to Check | How to Report |
+    |----------|---------------|---------------|
+    | Logic errors | Data flow, boundary conditions | "The condition on line X doesn't handle case Y" |
+    | Integration | API contracts, versions | "The API expects X but we're sending Y" |
+    | Timing/async | Race conditions, await handling | "There's a race between A and B" |
+    | Intermittent | Variable conditions, state | "This fails when [condition] because [reason]" |
+  }
 
-    PerspectiveSelection {
-      Error message present       => Error Trace
-      Produces wrong result       => Code Path
-      External service involved   => Dependencies
-      Intermittent or timing      => State
-      Works locally, fails in CI  => Environment
-      Regression / "worked before" => Recent Changes
-    }
+  PerspectiveSelection {
+    Error message present       => Error Trace
+    Produces wrong result       => Code Path
+    External service involved   => Dependencies
+    Intermittent or timing      => State
+    Works locally, fails in CI  => Environment
+    Regression / "worked before" => Recent Changes
   }
 
   Workflow {

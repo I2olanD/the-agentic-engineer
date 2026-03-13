@@ -32,19 +32,20 @@ Analyze {
     | Performance | Find optimization opportunities | Bottlenecks, caching patterns, query patterns, resource usage | .start/research/ |
     | Integration | Map external boundaries | External APIs, webhooks, data flows, third-party services | .start/interfaces/ |
     | Data | Map persistence layer | Data models, schemas, relationships, migrations, storage patterns, indexing strategies | .start/patterns/ |
+  }
 
-    FocusAreaMapping {
-      "business" | "domain"        => Business perspective
-      "technical" | "architecture" => Technical perspective
-      "security"                   => Security perspective
-      "performance"                => Performance perspective
-      "integration" | "api"        => Integration perspective
-      "data" | "schema" | "database" => Data perspective
-      empty | broad request        => all relevant perspectives
-    }
+  FocusAreaMapping {
+    "business" | "domain"        => Business perspective
+    "technical" | "architecture" => Technical perspective
+    "security"                   => Security perspective
+    "performance"                => Performance perspective
+    "integration" | "api"        => Integration perspective
+    "data" | "schema" | "database" => Data perspective
+    empty | broad request        => all relevant perspectives
   }
 
   Workflow {
+
     Phase1_Initialize {
       Determine which perspectives to use based on $ARGUMENTS using FocusAreaMapping.
       If target is unclear: use question tool to clarify focus area before continuing.
