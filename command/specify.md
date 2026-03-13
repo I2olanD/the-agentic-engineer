@@ -45,26 +45,27 @@ Specify {
     | Performance | Define capacity targets | Load expectations, latency targets, scalability requirements |
     | Integration | Map external boundaries | APIs, third-party services, data flows, contracts |
     | UX | Define user experience requirements | User flows, interaction patterns, accessibility requirements, error states |
+  }
 
-    AgentFocus {
-      Requirements => Interview stakeholders (user), identify personas, define acceptance criteria
-      Technical    => Analyze existing architecture, evaluate options, identify constraints
-      Security     => Assess auth needs, data sensitivity, compliance requirements
-      Performance  => Define SLOs, identify bottleneck risks, set capacity targets
-      Integration  => Map external APIs, document contracts, identify data flows
-      UX           => Define user flows, interaction patterns, accessibility requirements (skip if no UI)
-    }
+  AgentFocus {
+    Requirements => Interview stakeholders (user), identify personas, define acceptance criteria
+    Technical    => Analyze existing architecture, evaluate options, identify constraints
+    Security     => Assess auth needs, data sensitivity, compliance requirements
+    Performance  => Define SLOs, identify bottleneck risks, set capacity targets
+    Integration  => Map external APIs, document contracts, identify data flows
+    UX           => Define user flows, interaction patterns, accessibility requirements (skip if no UI)
+  }
 
-    ResearchSynthesis {
-      After parallel research completes:
-        1. Collect all findings from research agents.
-        2. Deduplicate overlapping discoveries.
-        3. Identify conflicts requiring user decision.
-        4. Organize by document section (PRD, SDD, PLAN).
-    }
+  ResearchSynthesis {
+    After parallel research completes:
+      1. Collect all findings from research agents.
+      2. Deduplicate overlapping discoveries.
+      3. Identify conflicts requiring user decision.
+      4. Organize by document section (PRD, SDD, PLAN).
   }
 
   Workflow {
+
     Phase1_Initialize {
       Invoke /specify-meta to create or read the spec directory.
 

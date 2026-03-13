@@ -31,30 +31,31 @@ Refactor {
   }
 
   AnalysisPerspectives {
-    StandardPerspectives {
-      | Perspective | Intent | What to Analyze |
-      |-------------|--------|-----------------|
-      | Code Smells | Find improvement opportunities | Long methods, duplication, complexity, deep nesting, magic numbers |
-      | Dependencies | Map coupling issues | Circular dependencies, tight coupling, abstraction violations |
-      | Test Coverage | Assess safety for refactoring | Existing tests, coverage gaps, test quality, missing assertions |
-      | Patterns | Identify applicable techniques | Design patterns, refactoring recipes, architectural improvements |
-      | Risk | Evaluate change impact | Blast radius, breaking changes, complexity, rollback difficulty, performance regression |
-    }
-
-    SimplificationPerspectives {
-      Use when $ARGUMENTS focuses on within-function readability (e.g., "simplify", "clean up", "reduce complexity").
-      Use StandardPerspectives for structural/architectural refactoring.
-
-      | Perspective | Intent | What to Find |
-      |-------------|--------|--------------|
-      | Complexity | Reduce cognitive load | Long methods (>20 lines), deep nesting, complex conditionals, convoluted loops, tangled async chains |
-      | Clarity | Make intent obvious | Unclear names, magic numbers, inconsistent patterns, overly defensive code, nested ternaries |
-      | Structure | Improve organization | Mixed concerns, tight coupling, bloated interfaces, god objects, too many parameters |
-      | Waste | Eliminate what shouldn't exist | Duplication, dead code, unused abstractions, speculative generality, copy-paste patterns |
-    }
+    Select perspectives based on $ARGUMENTS:
+      Simplification => Use when focus is within-function readability (e.g., "simplify", "clean up", "reduce complexity")
+      Standard       => Use for structural/architectural refactoring
 
     Note: Risk assessment from StandardPerspectives applies to ALL refactoring — always evaluate
           blast radius, breaking changes, and performance regression potential.
+  }
+
+  StandardPerspectives {
+    | Perspective | Intent | What to Analyze |
+    |-------------|--------|-----------------|
+    | Code Smells | Find improvement opportunities | Long methods, duplication, complexity, deep nesting, magic numbers |
+    | Dependencies | Map coupling issues | Circular dependencies, tight coupling, abstraction violations |
+    | Test Coverage | Assess safety for refactoring | Existing tests, coverage gaps, test quality, missing assertions |
+    | Patterns | Identify applicable techniques | Design patterns, refactoring recipes, architectural improvements |
+    | Risk | Evaluate change impact | Blast radius, breaking changes, complexity, rollback difficulty, performance regression |
+  }
+
+  SimplificationPerspectives {
+    | Perspective | Intent | What to Find |
+    |-------------|--------|--------------|
+    | Complexity | Reduce cognitive load | Long methods (>20 lines), deep nesting, complex conditionals, convoluted loops, tangled async chains |
+    | Clarity | Make intent obvious | Unclear names, magic numbers, inconsistent patterns, overly defensive code, nested ternaries |
+    | Structure | Improve organization | Mixed concerns, tight coupling, bloated interfaces, god objects, too many parameters |
+    | Waste | Eliminate what shouldn't exist | Duplication, dead code, unused abstractions, speculative generality, copy-paste patterns |
   }
 
   CodeSmellsCatalog {
@@ -117,6 +118,7 @@ Refactor {
   }
 
   Workflow {
+
     Phase1_EstablishBaseline {
       Locate target code from $ARGUMENTS. Run existing tests to establish baseline.
       Report baseline: passing/failing/skipped counts, coverage assessment.

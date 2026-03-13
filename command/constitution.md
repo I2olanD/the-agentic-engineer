@@ -69,17 +69,17 @@ Constitution {
     | Testing | Discover test practices | Test framework, file patterns, coverage requirements, mocking approaches |
     | Dependencies | Discover package governance | License restrictions, version pinning strategy, prohibited packages, lockfile requirements |
     | Performance | Discover performance constraints | Bundle size budgets, response time targets, query count limits, caching requirements |
+  }
 
-    FocusAreaMapping {
-      "security"                    => Security perspective
-      "testing"                     => Testing perspective
-      "architecture"                => Architecture perspective
-      "code quality"                => Code Quality perspective
-      "dependencies" | "packages"   => Dependencies perspective
-      "performance"                 => Performance perspective
-      empty | "all"                 => all perspectives
-      framework-specific            => relevant subset based on framework
-    }
+  FocusAreaMapping {
+    "security"                    => Security perspective
+    "testing"                     => Testing perspective
+    "architecture"                => Architecture perspective
+    "code quality"                => Code Quality perspective
+    "dependencies" | "packages"   => Dependencies perspective
+    "performance"                 => Performance perspective
+    empty | "all"                 => all perspectives
+    framework-specific            => relevant subset based on framework
   }
 
   Workflow {

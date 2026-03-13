@@ -52,87 +52,86 @@ Test {
   }
 
   DiscoveryProtocol {
-    Step1_IdentifyTestRunner {
-      Search for configuration files:
+    Step1: Identify test runner from configuration files.
+    Step2: Locate test files using common patterns.
+    Step3: Assess scope by counting and categorizing tests.
+    Step4: Check for additional quality commands (lint, typecheck, format).
+  }
 
-      | File | Runner | Ecosystem |
-      |------|--------|-----------|
-      | package.json (scripts.test) | npm/yarn/pnpm/bun | Node.js |
-      | jest.config.* | Jest | Node.js |
-      | vitest.config.* | Vitest | Node.js |
-      | .mocharc.* | Mocha | Node.js |
-      | playwright.config.* | Playwright | Node.js (E2E) |
-      | cypress.config.* | Cypress | Node.js (E2E) |
-      | pytest.ini, pyproject.toml | pytest | Python |
-      | Cargo.toml | cargo test | Rust |
-      | go.mod | go test | Go |
-      | build.gradle*, pom.xml | JUnit/TestNG | Java |
-      | Makefile (test target) | make | Any |
-      | .github/workflows/* | CI config | Any |
-    }
+  TestRunnerLookup {
+    | File | Runner | Ecosystem |
+    |------|--------|-----------|
+    | package.json (scripts.test) | npm/yarn/pnpm/bun | Node.js |
+    | jest.config.* | Jest | Node.js |
+    | vitest.config.* | Vitest | Node.js |
+    | .mocharc.* | Mocha | Node.js |
+    | playwright.config.* | Playwright | Node.js (E2E) |
+    | cypress.config.* | Cypress | Node.js (E2E) |
+    | pytest.ini, pyproject.toml | pytest | Python |
+    | Cargo.toml | cargo test | Rust |
+    | go.mod | go test | Go |
+    | build.gradle*, pom.xml | JUnit/TestNG | Java |
+    | Makefile (test target) | make | Any |
+    | .github/workflows/* | CI config | Any |
+  }
 
-    Step2_LocateTestFiles {
-      Common patterns:
-        **/*.test.{ts,tsx,js,jsx}  — Co-located tests
-        **/*.spec.{ts,tsx,js,jsx}  — Co-located specs
-        __tests__/**/*             — Test directories
-        tests/**/*                 — Top-level test dir
-        *_test.go                  — Go tests
-        test_*.py, *_test.py       — Python tests
-        **/*_test.rs               — Rust tests
-    }
+  TestFilePatterns {
+    **/*.test.{ts,tsx,js,jsx}  — Co-located tests
+    **/*.spec.{ts,tsx,js,jsx}  — Co-located specs
+    __tests__/**/*             — Test directories
+    tests/**/*                 — Top-level test dir
+    *_test.go                  — Go tests
+    test_*.py, *_test.py       — Python tests
+    **/*_test.rs               — Rust tests
+  }
 
-    Step3_AssessScope {
-      Count and categorize:
-        Unit tests        — isolated component/function tests
-        Integration tests — cross-module/service tests
-        E2E tests         — browser/API end-to-end tests
-        Other             — snapshot, performance, accessibility tests
-    }
+  TestCategories {
+    Unit tests        — isolated component/function tests
+    Integration tests — cross-module/service tests
+    E2E tests         — browser/API end-to-end tests
+    Other             — snapshot, performance, accessibility tests
+  }
 
-    Step4_CheckQualityCommands {
-      Look for additional quality commands:
-        Lint:        npm run lint, ruff check, cargo clippy
-        Type check:  npm run typecheck, mypy, cargo check
-        Format check: npm run format:check, ruff format --check
-    }
+  QualityCommands {
+    Lint:        npm run lint, ruff check, cargo clippy
+    Type check:  npm run typecheck, mypy, cargo check
+    Format check: npm run format:check, ruff format --check
   }
 
   FailureInvestigation {
-    Categories {
-      | Category | What to Look For | Action |
-      |----------|-----------------|--------|
-      | YOUR_CHANGE | Test was passing in baseline, fails after your changes | Fix implementation or update test to match new correct behavior |
-      | OUTDATED_TEST | Test assertions don't match current intended behavior | Update test to match correct behavior |
-      | TEST_BUG | Test logic is flawed (wrong assertion, bad mock, race condition) | Fix the test |
-      | MISSING_DEP | Import errors, missing fixtures, setup failures | Add the missing piece |
-      | ENVIRONMENT | Port conflicts, file locks, timing issues | Fix environment setup |
-      | CODE_BUG | Test correctly catches a real bug | Fix the production code |
-    }
+    For EVERY failing test:
+      1. Categorize the failure using FailureCategories.
+      2. Read the failing test — understand what it's testing and why.
+      3. Read the code under test — understand the implementation.
+      4. Determine the correct fix — fix the code, the test, or both.
+      5. Apply the fix — edit the minimal set of files needed.
+      6. Re-run the specific test — confirm the fix works.
+      7. Re-run the full suite — confirm no regressions.
+  }
 
-    FixProtocol {
-      For EVERY failing test:
-        1. Read the failing test — understand what it's testing and why.
-        2. Read the code under test — understand the implementation.
-        3. Determine the correct fix — fix the code, the test, or both.
-        4. Apply the fix — edit the minimal set of files needed.
-        5. Re-run the specific test — confirm the fix works.
-        6. Re-run the full suite — confirm no regressions.
-    }
+  FailureCategories {
+    | Category | What to Look For | Action |
+    |----------|-----------------|--------|
+    | YOUR_CHANGE | Test was passing in baseline, fails after your changes | Fix implementation or update test to match new correct behavior |
+    | OUTDATED_TEST | Test assertions don't match current intended behavior | Update test to match correct behavior |
+    | TEST_BUG | Test logic is flawed (wrong assertion, bad mock, race condition) | Fix the test |
+    | MISSING_DEP | Import errors, missing fixtures, setup failures | Add the missing piece |
+    | ENVIRONMENT | Port conflicts, file locks, timing issues | Fix environment setup |
+    | CODE_BUG | Test correctly catches a real bug | Fix the production code |
+  }
 
-    EscalationRules {
-      Only acceptable for:
-        External service dependencies that are down
-        Infrastructure requirements beyond the codebase (e.g., database migration needed)
-        Permission/access issues
+  EscalationRules {
+    Only acceptable for:
+      External service dependencies that are down
+      Infrastructure requirements beyond the codebase (e.g., database migration needed)
+      Permission/access issues
 
-      NOT acceptable for:
-        "Complex" code you don't understand — Read it more carefully
-        "Might break something else" — Run the tests and find out
-        "Not my responsibility" — Yes it is. You touched the codebase.
+    NOT acceptable for:
+      "Complex" code you don't understand — Read it more carefully
+      "Might break something else" — Run the tests and find out
+      "Not my responsibility" — Yes it is. You touched the codebase.
 
-      If fixing one test breaks another: find the root cause that satisfies all tests — do NOT revert and give up.
-    }
+    If fixing one test breaks another: find the root cause that satisfies all tests — do NOT revert and give up.
   }
 
   ReportTypes {
@@ -144,6 +143,7 @@ Test {
   }
 
   Workflow {
+
     Phase1_Discover {
       Follow DiscoveryProtocol.
 
@@ -175,8 +175,8 @@ Test {
       }
 
       For each failure:
-        1. Categorize the failure using FailureInvestigation.Categories.
-        2. Apply minimal fix per FixProtocol.
+        1. Categorize the failure using FailureCategories.
+        2. Apply minimal fix per FailureInvestigation.
         3. Re-run specific test to verify.
         4. Re-run full suite to confirm no regressions.
         5. If fixing one test breaks another: find root cause, do NOT give up.

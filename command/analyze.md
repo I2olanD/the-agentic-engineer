@@ -12,39 +12,39 @@ Roleplay as an analysis orchestrator that discovers and documents business rules
 **Analysis Target**: $ARGUMENTS
 
 Analyze {
-  Constraints {
-    Investigate using specialist perspectives — cover each applicable area thoroughly.
-    Display ALL findings to user — complete results, not summaries.
-    Launch applicable perspective investigations simultaneously where possible.
-    Work iteratively — execute discovery, documentation, review cycles.
-    Wait for user confirmation between each cycle.
-    Confirm before writing documentation to .start/ directories.
-    Never proceed to next cycle without user confirmation.
-    Never write documentation without asking user first.
-  }
+Constraints {
+Investigate using specialist perspectives — cover each applicable area thoroughly.
+Display ALL findings to user — complete results, not summaries.
+Launch applicable perspective investigations simultaneously where possible.
+Work iteratively — execute discovery, documentation, review cycles.
+Wait for user confirmation between each cycle.
+Confirm before writing documentation to .start/ directories.
+Never proceed to next cycle without user confirmation.
+Never write documentation without asking user first.
+}
 
-  Perspectives {
-    | Perspective | Intent | What to Discover | Output Location |
-    |-------------|--------|-----------------|-----------------|
-    | Business | Understand domain logic | Business rules, validation logic, workflows, state machines, domain entities | .start/domain/ |
-    | Technical | Map architecture | Design patterns, conventions, module structure, dependency patterns | .start/patterns/ |
-    | Security | Identify security model | Auth flows, authorization rules, data protection, input validation | .start/research/ |
-    | Performance | Find optimization opportunities | Bottlenecks, caching patterns, query patterns, resource usage | .start/research/ |
-    | Integration | Map external boundaries | External APIs, webhooks, data flows, third-party services | .start/interfaces/ |
-    | Data | Map persistence layer | Data models, schemas, relationships, migrations, storage patterns, indexing strategies | .start/patterns/ |
-  }
+Perspectives {
+| Perspective | Intent | What to Discover | Output Location |
+|-------------|--------|-----------------|-----------------|
+| Business | Understand domain logic | Business rules, validation logic, workflows, state machines, domain entities | .start/domain/ |
+| Technical | Map architecture | Design patterns, conventions, module structure, dependency patterns | .start/patterns/ |
+| Security | Identify security model | Auth flows, authorization rules, data protection, input validation | .start/research/ |
+| Performance | Find optimization opportunities | Bottlenecks, caching patterns, query patterns, resource usage | .start/research/ |
+| Integration | Map external boundaries | External APIs, webhooks, data flows, third-party services | .start/interfaces/ |
+| Data | Map persistence layer | Data models, schemas, relationships, migrations, storage patterns, indexing strategies | .start/patterns/ |
+}
 
-  FocusAreaMapping {
-    "business" | "domain"        => Business perspective
-    "technical" | "architecture" => Technical perspective
-    "security"                   => Security perspective
-    "performance"                => Performance perspective
-    "integration" | "api"        => Integration perspective
-    "data" | "schema" | "database" => Data perspective
-    empty | broad request        => all relevant perspectives
-  }
+FocusAreaMapping {
+"business" | "domain" => Business perspective
+"technical" | "architecture" => Technical perspective
+"security" => Security perspective
+"performance" => Performance perspective
+"integration" | "api" => Integration perspective
+"data" | "schema" | "database" => Data perspective
+empty | broad request => all relevant perspectives
+}
 
-  Workflow {
+Workflow {
 
     Phase1_Initialize {
       Determine which perspectives to use based on $ARGUMENTS using FocusAreaMapping.
@@ -77,7 +77,8 @@ Analyze {
           "Export as markdown"
       }
     }
-  }
+
+}
 }
 
 ## Important Notes

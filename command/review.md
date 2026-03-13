@@ -55,17 +55,17 @@ Review {
     | HIGH | Clear violation of established pattern or security rule |
     | MEDIUM | Likely issue but context-dependent |
     | LOW | Potential improvement, may not be applicable |
+  }
 
-    CommonClassifications {
-      SQL Injection       => CRITICAL / HIGH confidence
-      XSS Vulnerability   => CRITICAL / HIGH confidence
-      Hardcoded Secret    => CRITICAL / HIGH confidence
-      N+1 Query           => HIGH / HIGH confidence
-      Missing Auth Check  => CRITICAL / MEDIUM confidence
-      No Input Validation => MEDIUM / HIGH confidence
-      Long Function       => LOW / HIGH confidence
-      Missing Test        => MEDIUM / MEDIUM confidence
-    }
+  CommonClassifications {
+    SQL Injection       => CRITICAL / HIGH confidence
+    XSS Vulnerability   => CRITICAL / HIGH confidence
+    Hardcoded Secret    => CRITICAL / HIGH confidence
+    N+1 Query           => HIGH / HIGH confidence
+    Missing Auth Check  => CRITICAL / MEDIUM confidence
+    No Input Validation => MEDIUM / HIGH confidence
+    Long Function       => LOW / HIGH confidence
+    Missing Test        => MEDIUM / MEDIUM confidence
   }
 
   ReviewChecklists {

@@ -31,25 +31,25 @@ Document {
     | Audit | Identify documentation gaps | Coverage metrics, stale docs, missing documentation, prioritized backlog | (meta-action) |
     | Capture | Preserve discoveries | Business rules → .start/domain/, technical patterns → .start/patterns/, external integrations → .start/interfaces/ | .start/* |
     | Architecture | Document system design decisions | ADRs for key decisions, module overviews, data flow diagrams, technology rationale | .start/architecture/ |
+  }
 
-    TargetMapping {
-      file | directory => Code perspective
-      "api"            => API + Code perspectives
-      "readme"         => README perspective
-      "audit"          => Audit (runs first, informs which other perspectives to use)
-      "capture"        => Capture perspective
-      "architecture" | "adr" => Architecture perspective
-      empty | "all"    => all applicable perspectives
-    }
+  TargetMapping {
+    file | directory => Code perspective
+    "api"            => API + Code perspectives
+    "readme"         => README perspective
+    "audit"          => Audit (runs first, informs which other perspectives to use)
+    "capture"        => Capture perspective
+    "architecture" | "adr" => Architecture perspective
+    empty | "all"    => all applicable perspectives
+  }
 
-    DocumentationStandards {
-      Every documented element should have:
-        1. Summary — one-line description
-        2. Parameters — all inputs with types and descriptions
-        3. Returns — output type and description
-        4. Throws/Raises — possible errors
-        5. Example — usage example (for public APIs)
-    }
+  DocumentationStandards {
+    Every documented element should have:
+      1. Summary — one-line description
+      2. Parameters — all inputs with types and descriptions
+      3. Returns — output type and description
+      4. Throws/Raises — possible errors
+      5. Example — usage example (for public APIs)
   }
 
   KnowledgeCaptureGuidelines {

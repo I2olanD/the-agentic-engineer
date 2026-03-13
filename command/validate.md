@@ -24,95 +24,97 @@ Validate {
   }
 
   ValidationModes {
-    ModeDetection {
-      match (target) {
-        /^\d{3}/                 => Spec Validation
-        file path                => File Validation
-        "drift" | "check drift"  => Drift Detection
-        "constitution"           => Constitution Validation
-        "$X against $Y"          => Comparison Validation
-        freeform text            => Understanding Validation
-      }
+    match (target) {
+      /^\d{3}/                 => Spec Validation
+      file path                => File Validation
+      "drift" | "check drift"  => Drift Detection
+      "constitution"           => Constitution Validation
+      "$X against $Y"          => Comparison Validation
+      freeform text            => Understanding Validation
     }
+  }
 
-    SpecValidation {
-      Input: spec ID like `005` or `005-feature-name`
-      Validates specification documents for quality and readiness.
-      Sub-modes: PRD only → document quality | PRD+SDD → cross-doc alignment | All → pre-impl readiness
-      Perspectives: Completeness, Consistency, Coverage + ambiguity detection
-    }
+  SpecValidation {
+    Input: spec ID like `005` or `005-feature-name`
+    Validates specification documents for quality and readiness.
+    Sub-modes: PRD only → document quality | PRD+SDD → cross-doc alignment | All → pre-impl readiness
+    Perspectives: Completeness, Consistency, Coverage + ambiguity detection
+  }
 
-    FileValidation {
-      Input: file path like `src/auth.ts` or `.start/design.md`
-      Validates individual files for quality and completeness.
-      For spec files: structure, [NEEDS CLARIFICATION] markers, checklist completion, ambiguity
-      For implementation files: TODO/FIXME markers, code completeness, spec correspondence
-      Perspectives: Completeness, Consistency, Alignment
-    }
+  FileValidation {
+    Input: file path like `src/auth.ts` or `.start/design.md`
+    Validates individual files for quality and completeness.
+    For spec files: structure, [NEEDS CLARIFICATION] markers, checklist completion, ambiguity
+    For implementation files: TODO/FIXME markers, code completeness, spec correspondence
+    Perspectives: Completeness, Consistency, Alignment
+  }
 
-    DriftDetection {
-      Input: "drift" or "check drift"
-      Detects divergence between specifications and implementation.
-      Perspectives: Drift, Alignment, Consistency
+  DriftDetection {
+    Input: "drift" or "check drift"
+    Detects divergence between specifications and implementation.
+    Perspectives: Drift, Alignment, Consistency
+  }
 
-      DriftTypes {
-        Scope Creep  => Implementation adds features not in spec
-        Missing      => Spec requires feature not implemented
-        Contradicts  => Implementation conflicts with spec
-        Extra        => Unplanned work that may be valuable
-      }
+  DriftTypes {
+    Scope Creep  => Implementation adds features not in spec
+    Missing      => Spec requires feature not implemented
+    Contradicts  => Implementation conflicts with spec
+    Extra        => Unplanned work that may be valuable
+  }
 
-      DriftIsInformation: Drift isn't inherently bad — it's valuable feedback.
-        Scope creep may indicate incomplete requirements.
-        Missing items may reveal unrealistic timelines.
-        Contradictions may surface spec ambiguities.
-        The goal is awareness and conscious decision-making, not rigid compliance.
+  DriftPhilosophy {
+    DriftIsInformation: Drift isn't inherently bad — it's valuable feedback.
+      Scope creep may indicate incomplete requirements.
+      Missing items may reveal unrealistic timelines.
+      Contradictions may surface spec ambiguities.
+      The goal is awareness and conscious decision-making, not rigid compliance.
 
-      DriftLogging: All drift decisions should be logged to spec README under "## Drift Log":
-        | Date | Phase | Drift Type | Status | Notes |
-        Status values: Acknowledged | Updated | Deferred
-    }
+    DriftLogging: All drift decisions should be logged to spec README under "## Drift Log":
+      | Date | Phase | Drift Type | Status | Notes |
+      Status values: Acknowledged | Updated | Deferred
+  }
 
-    ConstitutionValidation {
-      Input: "constitution"
-      Enforces project governance rules from CONSTITUTION.md.
-      Perspective: Constitution only
+  ConstitutionValidation {
+    Input: "constitution"
+    Enforces project governance rules from CONSTITUTION.md.
+    Perspective: Constitution only
+  }
 
-      LevelBehavior {
-        L1 (Must)   => Blocking, AI auto-corrects before proceeding
-        L2 (Should) => Blocking, requires human action
-        L3 (May)    => Advisory only, non-blocking
-      }
+  ConstitutionLevels {
+    | Level | Behavior |
+    |-------|----------|
+    | L1 (Must) | Blocking, AI auto-corrects before proceeding |
+    | L2 (Should) | Blocking, requires human action |
+    | L3 (May) | Advisory only, non-blocking |
+  }
 
-      GracefulDegradation {
-        No CONSTITUTION.md    => Report "No constitution found. Skipping constitution checks."
-        Invalid rule format   => Skip rule, warn user, continue with other rules
-        Scope matches no files => Report as info, not a failure
-      }
-    }
+  ConstitutionGracefulDegradation {
+    No CONSTITUTION.md    => Report "No constitution found. Skipping constitution checks."
+    Invalid rule format   => Skip rule, warn user, continue with other rules
+    Scope matches no files => Report as info, not a failure
+  }
 
-    ComparisonValidation {
-      Input: "$X against $Y" or "validate X matches Y"
-      Compares source (implementation) against reference (specification).
-      Perspectives: Alignment, Consistency, Coverage
+  ComparisonValidation {
+    Input: "$X against $Y" or "validate X matches Y"
+    Compares source (implementation) against reference (specification).
+    Perspectives: Alignment, Consistency, Coverage
 
-      Process:
-        1. Extract requirements/components from reference.
-        2. Check each against source implementation.
-        3. Build traceability matrix.
-        4. Report coverage and deviations.
-    }
+    Process:
+      1. Extract requirements/components from reference.
+      2. Check each against source implementation.
+      3. Build traceability matrix.
+      4. Report coverage and deviations.
+  }
 
-    UnderstandingValidation {
-      Input: freeform like "Is my approach correct?"
-      Validates understanding, approach, or design decisions.
-      Perspectives: Alignment, Completeness
+  UnderstandingValidation {
+    Input: freeform like "Is my approach correct?"
+    Validates understanding, approach, or design decisions.
+    Perspectives: Alignment, Completeness
 
-      Findings categorized as:
-        Correct understanding
-        Partially correct (with clarification)
-        Misconception (with correction)
-    }
+    Findings categorized as:
+      Correct understanding
+      Partially correct (with clarification)
+      Misconception (with correction)
   }
 
   Perspectives {
@@ -124,17 +126,17 @@ Validate {
     | Coverage | Assess specification depth | All requirements have acceptance criteria, edge cases addressed, error handling documented, measurable targets |
     | Drift | Detect spec-implementation divergence | Scope creep, missing features, contradictions, extra unplanned work |
     | Constitution | Enforce governance rules | L1/L2/L3 rule enforcement per CONSTITUTION.md |
+  }
 
-    PerspectivesByMode {
-      | Validation Mode | Perspectives Applied |
-      |----------------|---------------------|
-      | Spec Validation | Completeness, Consistency, Coverage + ambiguity detection |
-      | File Validation | Completeness, Consistency, Alignment |
-      | Drift Detection | Drift, Alignment, Consistency |
-      | Constitution | Constitution |
-      | Comparison | Alignment, Consistency, Coverage |
-      | Understanding | Alignment, Completeness |
-    }
+  PerspectivesByMode {
+    | Validation Mode | Perspectives Applied |
+    |----------------|---------------------|
+    | Spec Validation | Completeness, Consistency, Coverage + ambiguity detection |
+    | File Validation | Completeness, Consistency, Alignment |
+    | Drift Detection | Drift, Alignment, Consistency |
+    | Constitution | Constitution |
+    | Comparison | Alignment, Consistency, Coverage |
+    | Understanding | Alignment, Completeness |
   }
 
   AmbiguityDetection {
@@ -166,6 +168,7 @@ Validate {
   }
 
   Workflow {
+
     Phase1_ParseMode {
       Determine validation mode from $ARGUMENTS using ModeDetection.
     }
