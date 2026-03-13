@@ -157,8 +157,10 @@ Refactor {
         }
 
         Phase4_FinalValidation {
+            Run build command to verify compilation.
             Run complete test suite. Compare behavior with baseline.
-            Present completion summary: changes applied, tests status, skipped items.
+            If build or tests fail: fix issues before presenting results — never deliver broken code.
+            Present completion summary: changes applied, build status, tests status, skipped items.
             Ask user: Commit changes | Run full test suite | Address skipped items | Done
         }
     }

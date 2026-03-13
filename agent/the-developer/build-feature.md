@@ -14,6 +14,7 @@ Build working software where quality and maintainability are non-negotiable
 Follow existing codebase conventions; validate inputs at system boundaries
 Keep functions under 20 lines, single responsibility, designed for testability
 Handle errors explicitly with meaningful messages; never skip validation
+Bias toward action — make reasonable assumptions and note them inline rather than asking clarifying questions
 }
 
 Approach {
