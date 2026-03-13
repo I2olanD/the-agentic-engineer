@@ -159,7 +159,7 @@ Refactor {
         Phase4_FinalValidation {
             Run build command to verify compilation.
             Run complete test suite. Compare behavior with baseline.
-            If build or tests fail: fix issues before presenting results — never deliver broken code.
+            If build or tests fail: self-correct (max 3 attempts) before escalating to user.
             Present completion summary: changes applied, build status, tests status, skipped items.
             Ask user: Commit changes | Run full test suite | Address skipped items | Done
         }

@@ -14,23 +14,24 @@ Roleplay as a senior engineering lead who runs comprehensive parallel audits acr
 Audit {
 
     Constraints {
-        Launch ALL audit dimensions simultaneously in a single response.
+        Launch all applicable audit dimensions simultaneously in a single response.
         Each dimension agent must return structured findings with file, line, severity, and suggested fix.
         Synthesize findings into a unified report sorted by severity.
         Deduplicate findings that overlap across dimensions (e.g., dead code found by both Dead Code and Type Safety agents).
         Include a strengths section — highlight what's done well.
+        Dead Code dimension is identification-only — delegate removals to /sweep for safe-removal verification.
         Never present raw per-dimension dumps — synthesize into one report.
         Never block on one dimension to start another — all run in parallel.
     }
 
     AuditDimensions {
-        | Dimension | Intent | What to Find |
-        |-----------|--------|-------------|
-        | Type Safety | Find unsafe type patterns | `any` types, unsafe casts (`as`), missing null checks, untyped function parameters, implicit any returns |
-        | Dead Code | Find unused code | Unused exports, orphaned files, unreachable branches, unused dependencies (apply safe-removal verification) |
-        | Test Coverage | Find untested paths | Untested public functions, missing edge case tests, untested error paths, low-coverage modules |
-        | Security | Find vulnerabilities | Input validation gaps, auth/authz issues, injection risks, hardcoded secrets, unsafe deserialization |
-        | Performance | Find efficiency issues | N+1 queries, unnecessary re-renders, missing memoization, blocking operations, large bundle contributors |
+        | Dimension | Intent | What to Find | Activation |
+        |-----------|--------|-------------|------------|
+        | Type Safety | Find unsafe type patterns | `any` types, unsafe casts (`as`), missing null checks, untyped function parameters, implicit any returns | Typed languages (TypeScript, Go, Rust, Java) |
+        | Dead Code | Identify unused code (identification only — removals via /sweep) | Unused exports, orphaned files, unreachable branches, unused dependencies | Always |
+        | Test Coverage | Find untested paths | Untested public functions, missing edge case tests, untested error paths, low-coverage modules | Projects with test infrastructure |
+        | Security | Find vulnerabilities | Input validation gaps, auth/authz issues, injection risks, hardcoded secrets, unsafe deserialization | Projects with runtime code |
+        | Performance | Find efficiency issues | N+1 queries, unnecessary re-renders, missing memoization, blocking operations, large bundle contributors | Projects with runtime code |
     }
 
     FindingFormat {
@@ -58,16 +59,18 @@ Audit {
             Determine audit scope from $ARGUMENTS.
 
             match (target) {
-                "all"       => audit entire project
+                "all"       => audit entire project (for monorepos: suggest package-level scoping first)
                 directory   => audit specified directory
                 empty       => ask user for target
             }
 
             Identify project structure, tech stack, and test infrastructure.
+            Determine which dimensions apply using Activation rules from AuditDimensions.
+            Skip dimensions that don't match the project type (e.g., skip Type Safety for untyped languages).
         }
 
         Phase2_LaunchAudits {
-            Launch parallel subagents for ALL 5 dimensions simultaneously in a single response.
+            Launch parallel subagents for all applicable dimensions simultaneously in a single response.
 
             Each agent receives:
             - Target scope
@@ -123,8 +126,8 @@ Audit {
 
 ## Important Notes
 
-- Launch ALL 5 dimension agents simultaneously — this is the key efficiency gain over sequential review
+- Launch all applicable dimension agents simultaneously — skip dimensions that don't match the project type
 - Deduplicate cross-dimension findings (e.g., dead code found by both Type Safety and Dead Code agents)
 - Include strengths section — codebase health is not just about problems
 - Health assessment drives urgency: Critical issues block, High issues need attention, Medium/Low are optional
-- Dead code findings must follow safe-removal protocol before any automated removal
+- Dead code dimension is identification-only — delegate actual removals to /sweep which applies the safe-removal protocol (code-quality-review skill)

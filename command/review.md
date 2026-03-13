@@ -81,7 +81,7 @@ Review {
             Orphaned Exports: functions/types exported but no longer imported after the change
             Orphaned Imports: imports that reference removed or renamed symbols
             Unreachable Code: code after early returns, disabled branches, impossible conditions
-            Orphaned Dependencies: packages no longer imported after the change (use safe-removal protocol)
+            Orphaned Dependencies: packages no longer imported after the change (apply safe-removal protocol from code-quality-review skill)
             Orphaned Files: files no longer imported from any other file after the change
         }
 

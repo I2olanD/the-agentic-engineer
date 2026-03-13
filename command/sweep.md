@@ -24,31 +24,12 @@ Sweep {
         Revert immediately if build or tests fail after a removal batch.
     }
 
-    RemovalSafetyProtocol {
-        For EACH candidate, collect three independent signals:
-
-        | Signal | Method | Safe to Remove |
-        |--------|--------|----------------|
-        | Static imports | Grep for import/require of the export name across ALL files | Zero matches outside declaring file |
-        | Re-exports | Grep for re-export patterns (export { X } from, export * from) | Zero re-export matches |
-        | Dynamic references | Grep for string literals matching the name (bracket access, reflection, config keys) | Zero dynamic references |
-
-        Verdict: Remove ONLY when all three signals confirm zero usage.
-        When in doubt: KEEP the code and flag it for manual review.
-    }
-
-    DependencyRemovalProtocol {
-        For EACH dependency removal candidate:
-
-        | Check | Method | Safe to Remove |
-        |-------|--------|----------------|
-        | Direct imports | Grep for package name in import/require across ALL source files | Zero import matches |
-        | Peer dependency | Check if other installed packages list it as peerDependency | Not a required peer |
-        | Build/runtime | Check if referenced in build config, scripts, or runtime config | Zero config references |
-        | Transitive usage | Check if a direct dependency re-exports or depends on it | Not transitively needed |
-
-        Verdict: Remove ONLY when ALL checks confirm zero usage.
-        WARNING: DevDependencies used in build scripts (bundlers, transpilers, linters) are NOT dead.
+    SafetyProtocols {
+        Apply the safe-removal protocol from code-quality-review skill (reference/safe-removal.md):
+        - Export removal: three-signal verification (static imports, re-exports, dynamic references)
+        - Dependency removal: five-check verification (direct imports, build tool usage, peer deps, runtime config, transitive)
+        - Common false positives: check plugin entry points, event handlers, reflection targets, template bindings
+        Verdict: Remove ONLY when all signals confirm zero usage. When in doubt: KEEP and flag for manual review.
     }
 
     CandidateCategories {
@@ -74,7 +55,7 @@ Sweep {
             Determine sweep scope from $ARGUMENTS.
 
             match (target) {
-                "all"       => sweep entire project
+                "all"       => sweep entire project (for monorepos: suggest package-level scoping first)
                 directory   => sweep specified directory
                 empty       => ask user for target
             }
@@ -90,8 +71,11 @@ Sweep {
             - Unused Dependencies agent
             - Unreachable Code agent
 
-            Each agent: find candidates, apply RemovalSafetyProtocol or DependencyRemovalProtocol,
+            Each agent: find candidates, apply safe-removal protocol (code-quality-review skill),
             return evidence table with verdict per candidate.
+
+            After parallel agents complete: run Orphaned Types pass sequentially
+            (depends on dead code identified by other agents — types only used by removed code).
         }
 
         Phase3_PresentEvidence {
@@ -115,7 +99,6 @@ Sweep {
                 5. If fail: revert entire batch, investigate which candidate caused failure.
                    Move false positive to KEEP list. Retry remaining candidates.
 
-            After all batches: run full build + test suite.
         }
 
         Phase5_Report {

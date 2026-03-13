@@ -53,8 +53,8 @@ Approach {
    b. Implement minimal code to pass
    c. Run full test suite
    d. If tests fail: analyze failure, fix code, re-run (do NOT ask user — decide autonomously)
-   e. Repeat steps c-d until ALL tests pass (max 5 iterations)
-   f. If stuck after 5 iterations: stop, summarize what's blocking, ask user
+   e. Repeat steps c-d until ALL tests pass (max 3 iterations)
+   f. If stuck after 3 iterations: stop, summarize what's blocking, ask user
    g. Refactor while keeping tests green
 10. Run build command to verify compilation — fix any build errors before presenting results
 11. Verify conventions compliance using code-quality-review skill
