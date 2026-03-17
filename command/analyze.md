@@ -19,19 +19,19 @@ Analyze {
         Launch applicable perspective investigations simultaneously where possible.
         Work iteratively — execute discovery, documentation, review cycles.
         Wait for user confirmation between each cycle.
-        Confirm before writing documentation to .start/ directories.
+        Confirm before writing documentation to .engineer/ directories.
         Never proceed to next cycle without user confirmation.
         Never write documentation without asking user first.
     }
 
     | Perspective | Intent                          | What to Discover                                                                       | Output Location    |
     | ----------- | ------------------------------- | -------------------------------------------------------------------------------------- | ------------------ |
-    | Business    | Understand domain logic         | Business rules, validation logic, workflows, state machines, domain entities           | .start/domain/     |
-    | Technical   | Map architecture                | Design patterns, conventions, module structure, dependency patterns                    | .start/patterns/   |
-    | Security    | Identify security model         | Auth flows, authorization rules, data protection, input validation                     | .start/research/   |
-    | Performance | Find optimization opportunities | Bottlenecks, caching patterns, query patterns, resource usage                          | .start/research/   |
-    | Integration | Map external boundaries         | External APIs, webhooks, data flows, third-party services                              | .start/interfaces/ |
-    | Data        | Map persistence layer           | Data models, schemas, relationships, migrations, storage patterns, indexing strategies | .start/patterns/   |
+    | Business    | Understand domain logic         | Business rules, validation logic, workflows, state machines, domain entities           | .engineer/domain/     |
+    | Technical   | Map architecture                | Design patterns, conventions, module structure, dependency patterns                    | .engineer/patterns/   |
+    | Security    | Identify security model         | Auth flows, authorization rules, data protection, input validation                     | .engineer/research/   |
+    | Performance | Find optimization opportunities | Bottlenecks, caching patterns, query patterns, resource usage                          | .engineer/research/   |
+    | Integration | Map external boundaries         | External APIs, webhooks, data flows, third-party services                              | .engineer/interfaces/ |
+    | Data        | Map persistence layer           | Data models, schemas, relationships, migrations, storage patterns, indexing strategies | .engineer/patterns/   |
 
     FocusAreaMapping {
         "business" | "domain" => Business perspective
@@ -56,7 +56,7 @@ Analyze {
 
         Phase3_Synthesize {
             1. Deduplicate by evidence — merge complementary findings with the same file:line reference.
-            2. Group by documentation location (.start/domain/, .start/patterns/, .start/interfaces/, .start/research/).
+            2. Group by documentation location (.engineer/domain/, .engineer/patterns/, .engineer/interfaces/, .engineer/research/).
             3. Build cycle summary.
         }
 
@@ -68,10 +68,10 @@ Analyze {
                 After each cycle:
                 "Continue to next area"
                 "Investigate [finding] further"
-                "Persist findings to .start/"
+                "Persist findings to .engineer/"
                 "Complete analysis"
                 After final summary:
-                "Save documentation to .start/"
+                "Save documentation to .engineer/"
                 "Skip documentation"
                 "Export as markdown"
             }
@@ -84,5 +84,5 @@ Analyze {
 
 - Launch all applicable perspective agents simultaneously in a single response for efficiency
 - Wait for explicit user confirmation between each discovery cycle before proceeding
-- Only write documentation to .start/ directories after explicitly confirming with the user
+- Only write documentation to .engineer/ directories after explicitly confirming with the user
 - Focus area mapping routes the analysis: "business" → Business, "security" → Security, empty → all perspectives

@@ -66,7 +66,7 @@ opencode.json   OpenCode configuration (MCP servers, plugins)
 | `/validate`     | Validate specifications, implementations, and constitution compliance                                |
 | `/constitution` | Create or update project governance rules                                                            |
 
-The core specification pipeline: `/specify` produces `requirements.md` → `solution.md` → `plan/` phases, stored in `.start/specs/[NNN]-[name]/`. `/implement` executes phases sequentially with `/validate` at each boundary.
+The core specification pipeline: `/specify` produces `requirements.md` → `solution.md` → `plan/` phases, stored in `.engineer/specs/[NNN]-[name]/`. `/implement` executes phases sequentially with `/validate` at each boundary.
 
 ## Agents
 

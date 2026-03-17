@@ -27,11 +27,11 @@ Document {
         | Perspective | Intent | What to Document | Output |
         |-------------|--------|-----------------|--------|
         | Code | Make code self-explanatory | Functions, classes, interfaces, types with JSDoc/TSDoc/docstrings | Inline comments |
-        | API | Enable integration | Endpoints, request/response schemas, authentication, error codes, OpenAPI spec | .start/api/ |
+        | API | Enable integration | Endpoints, request/response schemas, authentication, error codes, OpenAPI spec | .engineer/api/ |
         | README | Enable quick start | Features, installation, configuration, usage examples, troubleshooting | README.md |
         | Audit | Identify documentation gaps | Coverage metrics, stale docs, missing documentation, prioritized backlog | (meta-action) |
-        | Capture | Preserve discoveries | Business rules → .start/domain/, technical patterns → .start/patterns/, external integrations → .start/interfaces/ | .start/* |
-        | Architecture | Document system design decisions | ADRs for key decisions, module overviews, data flow diagrams, technology rationale | .start/architecture/ |
+        | Capture | Preserve discoveries | Business rules → .engineer/domain/, technical patterns → .engineer/patterns/, external integrations → .engineer/interfaces/ | .engineer/* |
+        | Architecture | Document system design decisions | ADRs for key decisions, module overviews, data flow diagrams, technology rationale | .engineer/architecture/ |
     }
 
     TargetMapping {
@@ -55,9 +55,9 @@ Document {
 
     KnowledgeCaptureGuidelines {
         Categorization:
-        .start/domain/      — business rules (WHAT users can do)
-        .start/patterns/    — technical patterns (HOW we build it)
-        .start/interfaces/  — external service dependencies
+        .engineer/domain/      — business rules (WHAT users can do)
+        .engineer/patterns/    — technical patterns (HOW we build it)
+        .engineer/interfaces/  — external service dependencies
 
         NamingConventions {
             Pattern:   [noun]-[noun/verb].md       (e.g., error-handling.md, database-migrations.md)
@@ -81,8 +81,8 @@ Document {
         Phase2_LaunchDocumentation {
             Launch parallel subagents per applicable perspectives simultaneously in a single response.
 
-            For Capture perspective: follow categorization rules — .start/domain/ for business rules,
-            .start/patterns/ for technical patterns, .start/interfaces/ for external integrations.
+            For Capture perspective: follow categorization rules — .engineer/domain/ for business rules,
+            .engineer/patterns/ for technical patterns, .engineer/interfaces/ for external integrations.
         }
 
         Phase3_SynthesizeResults {

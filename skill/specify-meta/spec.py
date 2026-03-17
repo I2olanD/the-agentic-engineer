@@ -21,7 +21,7 @@ script_dir = Path(__file__).resolve().parent
 plugin_root = script_dir.parent.parent
 
 # Specs are created in the current working directory
-SPECS_DIR = Path(".start/specs")
+SPECS_DIR = Path(".engineer/specs")
 # Skills directory for template lookup
 SKILLS_DIR = plugin_root / "skills"
 
@@ -57,7 +57,7 @@ def sanitize_name(name: str) -> str:
 
 
 def find_spec_dir(spec_id: str) -> Optional[Path]:
-    """Find a spec directory by ID in .start/specs/."""
+    """Find a spec directory by ID in .engineer/specs/."""
     if SPECS_DIR.exists():
         for dir_path in SPECS_DIR.iterdir():
             if dir_path.is_dir() and dir_path.name.startswith(f"{spec_id}-"):

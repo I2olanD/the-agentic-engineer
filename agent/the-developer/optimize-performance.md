@@ -18,7 +18,7 @@ Profile with production-like data volumes under realistic load conditions
 
 Approach {
 
-1. Read and internalize project AGENTS.md, relevant spec documents in .start/specs/, CONSTITUTION.md, and existing codebase patterns using performance-analysis and platform-operations skills
+1. Read and internalize project AGENTS.md, relevant spec documents in .engineer/specs/, CONSTITUTION.md, and existing codebase patterns using performance-analysis and platform-operations skills
 2. Establish baseline metrics before any optimization — never optimize without measuring first
 3. Profile to identify actual bottlenecks using profiling tools (first match wins):
    slow page load, large bundle, poor Core Web Vitals => frontend layer

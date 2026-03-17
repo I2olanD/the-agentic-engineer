@@ -18,7 +18,7 @@ Rollout safety with rollback planning and consumer notification
 
 Approach {
 
-1. Read and internalize project AGENTS.md, relevant spec documents in .start/specs/, CONSTITUTION.md, and existing API versioning/deprecation conventions
+1. Read and internalize project AGENTS.md, relevant spec documents in .engineer/specs/, CONSTITUTION.md, and existing API versioning/deprecation conventions
 2. Classify severity (first match wins):
    breaking change to production consumers without migration path => CRITICAL
    breaking change with insufficient deprecation period => HIGH

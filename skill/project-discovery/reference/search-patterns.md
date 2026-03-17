@@ -16,7 +16,7 @@ ls -la
 ls -la *.json *.yaml *.yml *.toml 2>/dev/null
 
 # Check for documentation
-ls -la README* AGENTS.md .start/ 2>/dev/null
+ls -la README* AGENTS.md .engineer/ 2>/dev/null
 ```
 
 ### Step 2: Source Organization

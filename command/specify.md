@@ -26,7 +26,7 @@ Specify {
     }
 
     DocumentStructure {
-        Specifications live in .start/specs/[NNN]-[name]/:
+        Specifications live in .engineer/specs/[NNN]-[name]/:
         README.md       — Decisions and progress tracking
         requirements.md — What and why (PRD)
         solution.md     — How (SDD)

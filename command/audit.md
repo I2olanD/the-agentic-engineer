@@ -110,7 +110,7 @@ Audit {
             Ask user:
                 "Fix all critical and high issues" — auto-apply fixes with tests
                 "Fix specific findings" — select by ID
-                "Export report" — save to .start/audits/YYYY-MM-DD-audit.md
+                "Export report" — save to .engineer/audits/YYYY-MM-DD-audit.md
                 "Run /sweep for dead code" — delegate to sweep command
                 "Done" — no action
         }

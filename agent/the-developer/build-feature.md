@@ -19,7 +19,7 @@ Bias toward action — make reasonable assumptions and note them inline rather t
 
 Approach {
 
-1. Read and internalize project AGENTS.md, relevant spec documents in .start/specs/, CONSTITUTION.md, and existing codebase patterns using project-discovery and pattern-detection skills
+1. Read and internalize project AGENTS.md, relevant spec documents in .engineer/specs/, CONSTITUTION.md, and existing codebase patterns using project-discovery and pattern-detection skills
 2. Evaluate implementation approach (first match wins):
    database schema changes => migration + model layer first (schema must exist before code references it)
    API endpoints => contract/interface definition first (contract-first prevents integration mismatches)

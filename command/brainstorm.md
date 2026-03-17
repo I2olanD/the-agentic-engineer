@@ -93,7 +93,7 @@ Brainstorm {
         Phase5_Conclude {
             Present complete design summary.
             Ask user:
-                Save design to file — write to .start/ideas/YYYY-MM-DD-<topic>.md
+                Save design to file — write to .engineer/ideas/YYYY-MM-DD-<topic>.md
                 Start specification — invoke /specify with design context
                 Done — keep design in conversation only
         }

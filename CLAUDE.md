@@ -68,7 +68,7 @@ All markdown definitions use YAML frontmatter with:
 
 ### Specification Workflow
 
-Specs live in `.start/specs/[NNN]-[name]/` with auto-incrementing IDs:
+Specs live in `.engineer/specs/[NNN]-[name]/` with auto-incrementing IDs:
 
 ```
 README.md         — Decisions and progress tracking

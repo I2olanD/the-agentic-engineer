@@ -18,7 +18,7 @@ Complete keyboard accessibility and screen reader support throughout
 
 Approach {
 
-1. Read and internalize project AGENTS.md, CONSTITUTION.md, and .start/patterns/accessibility-standards.md for WCAG-compliant interaction patterns
+1. Read and internalize project AGENTS.md, CONSTITUTION.md, and .engineer/patterns/accessibility-standards.md for WCAG-compliant interaction patterns
 2. Analyze information architecture through content inventory and card sorting
 3. Map user flows with task analysis, decision points, and error handling paths
 4. Design interaction patterns following platform conventions and accessibility standards
